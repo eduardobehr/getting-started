@@ -16,11 +16,37 @@ into depth, it covers the following topics:
 
 ## Getting Started
 
+Ir para app/ e criar Dockerfile:
+```Dockerfile
+ # syntax=docker/dockerfile:1
+ FROM node:12-alpine
+ RUN apk add --no-cache python g++ make
+ WORKDIR /app
+ COPY . .
+ RUN yarn install --production
+ CMD ["node", "src/index.js"]
+```
+
+No diretório app/, criar Docker:
+
 If you wish to run the tutorial, you can use the following command after installing Docker Desktop:
+
+
+```shell
+$ docker build -t getting-started .
+```
+
+Agora, criar container:
 
 ```bash
 docker run -d -p 80:80 docker/getting-started
 ```
+Ou, segundo o tutorial em https://docs.docker.com/get-started/02_our_app/
+
+```shell
+$ docker run -dp 3000:3000 getting-started
+```
+
 
 Once it has started, you can open your browser to [http://localhost](http://localhost).
 
